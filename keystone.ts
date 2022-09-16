@@ -20,5 +20,11 @@ export default config({
     generateNextGraphqlAPI: true,
     generateNodeAPI: true,
   },
+  server: {
+    cors: {
+      origin: ["http://localhost:3000"],
+      credentials: true,
+    },
+  },
   lists: { User, Product, ProductImage },
 });
