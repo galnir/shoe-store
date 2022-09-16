@@ -19,7 +19,6 @@ export const Product = list({
         inlineCreate: { fields: ["image", "altText"] },
         inlineEdit: { fields: ["image", "altText"] },
       },
-      many: true,
     }),
     status: select({
       options: [
@@ -36,7 +35,18 @@ export const Product = list({
     price: integer(),
     user: relationship({
       ref: "User.products",
-      many: false,
+      hooks: {
+        resolveInput({ operation, resolvedData, context }) {
+          if (
+            operation === "create" &&
+            !resolvedData.user &&
+            context.session?.itemId
+          ) {
+            return { connect: { id: context.session?.itemId } };
+          }
+          return resolvedData.user;
+        },
+      },
     }),
   },
 });

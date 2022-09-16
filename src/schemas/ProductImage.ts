@@ -18,10 +18,6 @@ export const ProductImage = list({
     }),
     altText: text(),
     product: relationship({ ref: "Product.photo" }),
-    filename: text(),
-    originalFilename: text(),
-    mimetype: text(),
-    encoding: text(),
   },
   ui: {
     listView: {

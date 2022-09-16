@@ -8,7 +8,6 @@ import { insertSeedData } from "./seed-data";
 export default config({
   db: {
     provider: "mysql",
-    idField: { kind: "cuid" },
     url: process.env.DATABASE_URL || "",
     async onConnect(context: Context) {
       if (process.argv.includes("--seed-data")) {

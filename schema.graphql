@@ -130,13 +130,7 @@ type Product {
   id: ID!
   name: String
   description: String
-  photo(
-    where: ProductImageWhereInput! = {}
-    orderBy: [ProductImageOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-  ): [ProductImage!]
-  photoCount(where: ProductImageWhereInput! = {}): Int
+  photo: ProductImage
   status: String
   price: Int
   user: User
@@ -153,16 +147,10 @@ input ProductWhereInput {
   id: IDFilter
   name: StringFilter
   description: StringFilter
-  photo: ProductImageManyRelationFilter
+  photo: ProductImageWhereInput
   status: StringNullableFilter
   price: IntNullableFilter
   user: UserWhereInput
-}
-
-input ProductImageManyRelationFilter {
-  every: ProductImageWhereInput
-  some: ProductImageWhereInput
-  none: ProductImageWhereInput
 }
 
 input StringNullableFilter {
@@ -215,17 +203,16 @@ input ProductOrderByInput {
 input ProductUpdateInput {
   name: String
   description: String
-  photo: ProductImageRelateToManyForUpdateInput
+  photo: ProductImageRelateToOneForUpdateInput
   status: String
   price: Int
   user: UserRelateToOneForUpdateInput
 }
 
-input ProductImageRelateToManyForUpdateInput {
-  disconnect: [ProductImageWhereUniqueInput!]
-  set: [ProductImageWhereUniqueInput!]
-  create: [ProductImageCreateInput!]
-  connect: [ProductImageWhereUniqueInput!]
+input ProductImageRelateToOneForUpdateInput {
+  create: ProductImageCreateInput
+  connect: ProductImageWhereUniqueInput
+  disconnect: Boolean
 }
 
 input UserRelateToOneForUpdateInput {
@@ -242,15 +229,15 @@ input ProductUpdateArgs {
 input ProductCreateInput {
   name: String
   description: String
-  photo: ProductImageRelateToManyForCreateInput
+  photo: ProductImageRelateToOneForCreateInput
   status: String
   price: Int
   user: UserRelateToOneForCreateInput
 }
 
-input ProductImageRelateToManyForCreateInput {
-  create: [ProductImageCreateInput!]
-  connect: [ProductImageWhereUniqueInput!]
+input ProductImageRelateToOneForCreateInput {
+  create: ProductImageCreateInput
+  connect: ProductImageWhereUniqueInput
 }
 
 input UserRelateToOneForCreateInput {
@@ -263,10 +250,6 @@ type ProductImage {
   image: CloudinaryImage_File
   altText: String
   product: Product
-  filename: String
-  originalFilename: String
-  mimetype: String
-  encoding: String
 }
 
 type CloudinaryImage_File {
@@ -329,29 +312,17 @@ input ProductImageWhereInput {
   id: IDFilter
   altText: StringFilter
   product: ProductWhereInput
-  filename: StringFilter
-  originalFilename: StringFilter
-  mimetype: StringFilter
-  encoding: StringFilter
 }
 
 input ProductImageOrderByInput {
   id: OrderDirection
   altText: OrderDirection
-  filename: OrderDirection
-  originalFilename: OrderDirection
-  mimetype: OrderDirection
-  encoding: OrderDirection
 }
 
 input ProductImageUpdateInput {
   image: Upload
   altText: String
   product: ProductRelateToOneForUpdateInput
-  filename: String
-  originalFilename: String
-  mimetype: String
-  encoding: String
 }
 
 """
@@ -374,10 +345,6 @@ input ProductImageCreateInput {
   image: Upload
   altText: String
   product: ProductRelateToOneForCreateInput
-  filename: String
-  originalFilename: String
-  mimetype: String
-  encoding: String
 }
 
 input ProductRelateToOneForCreateInput {
