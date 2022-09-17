@@ -8,9 +8,15 @@ import Product from "../components/Product";
 const GET_PRODUCTS = gql`
   query GetProducts {
     products {
-      id
       name
+      price
       description
+      photo {
+        id
+        image {
+          publicUrlTransformed
+        }
+      }
     }
   }
 `;
