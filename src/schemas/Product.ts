@@ -1,16 +1,14 @@
+import { integer, select, text, relationship } from "@keystone-6/core/fields";
 import { list } from "@keystone-6/core";
-import {
-  text,
-  password,
-  relationship,
-  select,
-  integer,
-} from "@keystone-6/core/fields";
 
 export const Product = list({
   fields: {
     name: text({ validation: { isRequired: true } }),
-    description: text({ ui: { displayMode: "textarea" } }),
+    description: text({
+      ui: {
+        displayMode: "textarea",
+      },
+    }),
     photo: relationship({
       ref: "ProductImage.product",
       ui: {
@@ -37,6 +35,7 @@ export const Product = list({
       ref: "User.products",
       hooks: {
         resolveInput({ operation, resolvedData, context }) {
+          // Default to the currently logged in user on create.
           if (
             operation === "create" &&
             !resolvedData.user &&
