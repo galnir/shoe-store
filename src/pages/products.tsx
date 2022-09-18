@@ -9,6 +9,7 @@ const GET_PRODUCTS = gql`
   query GetProducts {
     products {
       name
+      id
       price
       description
       photo {
@@ -28,7 +29,7 @@ const ProductsPage: NextPageWithLayout = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-center items-center gap-8 py-18">
       {data?.products?.map((product: ProductType) => (
         <Product key={product.id} product={product} />
       ))}
