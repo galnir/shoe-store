@@ -3,10 +3,9 @@ import Link from "next/link";
 import formatMoney from "../../lib/formatMoney";
 
 const Product = ({ product }: { product: any }) => {
-  console.log(product);
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="border w-fit">
+      <div className="border w-fit hover:cursor-pointer">
         <div className="relative w-[400px] h-[400px] text-white">
           <div className="absolute top-0 right-0 font-bold bg-red-600 z-10 p-2 text-2xl">
             {formatMoney(product.price)}
