@@ -1731,6 +1731,21 @@
   resolved "https://registry.yarnpkg.com/@js-joda/core/-/core-5.3.1.tgz#998557969f357b4494649d4a63164d02645295af"
   integrity sha512-iHHyIRLEfXLqBN+BkyH8u8imMYr4ihRbFDEk8toqTwUECETVQFCTh2U59Sw2oMoRVaS3XRIb7pyCulltq2jFVA==
 
+"@keystone-6/auth@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@keystone-6/auth/-/auth-4.0.1.tgz#755746e194185fd25758d43f4fc930ab96bb9777"
+  integrity sha512-9flBu0ZFkmabzj+IaWrjX8EzWczQ7gO8hoFOmNHocEWGSB+tIx6q3EEE6upd2acERSnVlRAWrPwudMhnTYYcSQ==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+    "@keystone-ui/button" "^7.0.1"
+    "@keystone-ui/core" "^5.0.1"
+    "@keystone-ui/fields" "^7.1.1"
+    "@keystone-ui/loading" "^6.0.1"
+    "@keystone-ui/notice" "^6.0.1"
+    cross-fetch "^3.1.4"
+    fast-deep-equal "^3.1.3"
+    graphql "^15.8.0"
+
 "@keystone-6/cloudinary@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@keystone-6/cloudinary/-/cloudinary-4.0.1.tgz#36d1431d298a1863ef51d603b7e09926b8898e27"
@@ -1746,7 +1761,7 @@
     cuid "^2.1.8"
     react "^18.1.0"
 
-"@keystone-6/core@^2.3.0":
+"@keystone-6/core@^2.2.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-2.3.0.tgz#aadb3932b61d834c586ca26b47bfb257587a8803"
   integrity sha512-/IK7wEv78uy3C34eh2YxZmjoKDkpEEDxI49Fm2EfzV56o/C3hrF2WeNJ4rUYD+Kz++ZN74e/Pk/EI13pxtcbTg==
@@ -2530,6 +2545,11 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
+
+"@types/lodash@^4.14.185":
+  version "4.14.185"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.185.tgz#c9843f5a40703a8f5edfd53358a58ae729816908"
+  integrity sha512-evMDG1bC4rgQg4ku9tKpuMh5iBNEwNa3tf9zRHdP1qlv+1WUg44xat4IxCE14gIpZRGUUWAx2VhItCZc25NfMA==
 
 "@types/long@^4.0.0":
   version "4.0.2"
@@ -3594,6 +3614,13 @@ crc32-stream@^4.0.2:
     crc-32 "^1.2.0"
     readable-stream "^3.4.0"
 
+cross-fetch@^3.1.4:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
+  integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
+  dependencies:
+    node-fetch "2.6.7"
+
 cross-spawn@7.0.3, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -3686,6 +3713,11 @@ deep-is@^0.1.3, deep-is@~0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.4.tgz#a6f2dce612fadd2ef1f519b73551f17e85199831"
   integrity sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==
+
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
 defaults@^1.0.3:
   version "1.0.3"

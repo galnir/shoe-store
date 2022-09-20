@@ -3,14 +3,8 @@ import type { AppProps } from "next/app";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-//import config from "../../keystone"
-
-const client = new ApolloClient({
-  uri:
-    process.env.APOLLO_CLIENT_GRAPHQL_URI ||
-    "http://localhost:8000/api/graphql",
-  cache: new InMemoryCache(),
-});
+import { createUploadLink } from "apollo-upload-client";
+import { useApollo } from "../lib/apolloClient";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,11 +15,12 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const apolloClient = useApollo(pageProps);
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={apolloClient}>
         {getLayout(<Component {...pageProps} />)}
       </ApolloProvider>
     </>
