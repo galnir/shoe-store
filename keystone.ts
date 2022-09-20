@@ -6,6 +6,8 @@ import { ProductImage } from "./src/schemas/ProductImage";
 //import { insertSeedData } from "./seed-data";
 import { statelessSessions } from "@keystone-6/core/session";
 import { createAuth } from "@keystone-6/auth";
+import { insertSeedData } from "./seed-data";
+import { KeystoneContext } from "@keystone-6/core/types";
 
 const { withAuth } = createAuth({
   listKey: "User",
@@ -32,11 +34,11 @@ export default withAuth(
     db: {
       provider: "mysql",
       url: process.env.DATABASE_URL || "",
-      // async onConnect(context: Context) {
-      //   if (process.argv.includes("--seed-data")) {
-      //     await insertSeedData(context);
-      //   }
-      // },
+      async onConnect(context: KeystoneContext) {
+        if (process.argv.includes("--seed-data")) {
+          await insertSeedData(context);
+        }
+      },
     },
     experimental: {
       generateNextGraphqlAPI: true,
