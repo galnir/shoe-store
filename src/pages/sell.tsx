@@ -1,11 +1,12 @@
 import { ReactElement } from "react";
+import CreateProduct from "../components/CreateProduct";
 import PageLayout from "../components/PageLayout";
 import { NextPageWithLayout } from "./_app";
 
 const SellPage: NextPageWithLayout = () => {
   return (
     <div>
-      <h1>Sell</h1>
+      <CreateProduct />
     </div>
   );
 };
