@@ -84,7 +84,7 @@ const CreateProduct = () => {
         <input
           type="text"
           id="name"
-          className="p-1"
+          className="p-1 text-black placeholder:text-gray-500"
           name="name"
           placeholder="Name"
           value={inputs.name}
@@ -94,7 +94,7 @@ const CreateProduct = () => {
         <input
           type="number"
           id="price"
-          className="p-1"
+          className="p-1 text-black placeholder:text-gray-500"
           name="price"
           min={0}
           value={inputs.price}
@@ -104,7 +104,7 @@ const CreateProduct = () => {
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
-          className="p-1"
+          className="p-1 text-black placeholder:text-gray-500"
           name="description"
           value={inputs.description}
           placeholder="Enter A Description"
@@ -112,7 +112,7 @@ const CreateProduct = () => {
         />
         <button
           type="submit"
-          className="bg-red-500 text-white font-bold hover:bg-red-400"
+          className="bg-red-600 text-white font-bold hover:bg-red-500"
         >
           Add Product
         </button>

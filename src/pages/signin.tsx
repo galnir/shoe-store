@@ -64,7 +64,7 @@ const SignIn = () => {
           type="email"
           name="email"
           placeholder="johndoe@gmail.com"
-          className="px-1"
+          className="px-1 text-black placeholder:text-gray-500"
           autoComplete="email"
           value={inputs.email}
           onChange={handleChange}
@@ -73,14 +73,14 @@ const SignIn = () => {
         <input
           type="password"
           name="password"
-          className="px-1"
+          className="px-1 text-black placeholder:text-gray-500"
           placeholder="Password"
           autoComplete="password"
           value={inputs.password}
           onChange={handleChange}
         />
         <button
-          className="bg-red-500 text-white font-bold hover:bg-red-400"
+          className="bg-red-600 text-white font-bold hover:bg-red-500"
           type="submit"
         >
           Sign In
