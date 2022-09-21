@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { config } from "@keystone-6/core";
 import { User } from "./src/schemas/User";
 import { Product } from "./src/schemas/Product";
@@ -13,6 +14,7 @@ const { withAuth } = createAuth({
   listKey: "User",
   identityField: "email",
   secretField: "password",
+  sessionData: "id name email",
   initFirstItem: {
     fields: ["name", "email", "password"],
   },
@@ -49,6 +51,9 @@ export default withAuth(
         origin: ["http://localhost:3000"],
         credentials: true,
       },
+    },
+    ui: {
+      isAccessAllowed: ({ session }) => !!session?.data,
     },
     lists: { User, Product, ProductImage },
     session,

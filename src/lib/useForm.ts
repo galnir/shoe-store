@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useForm(
-  initial = {
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  }
-) {
+export default function useForm(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join("");
@@ -39,12 +32,7 @@ export default function useForm(
     // const blankState = Object.fromEntries(
     //   Object.entries(inputs).map(([key, value]) => [key, ""])
     // );
-    setInputs({
-      name: "",
-      price: 0,
-      description: "",
-      image: "",
-    });
+    setInputs({});
   }
 
   // return the things we want to surface from this custom hook

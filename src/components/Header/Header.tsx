@@ -1,5 +1,18 @@
 import Link from "next/link";
+import { gql } from "@apollo/client";
 import Logo from "../Logo";
+
+export const CURRENT_USER_QUERY = gql`
+  query {
+    authenticatedItem {
+      ... on User {
+        id
+        email
+        name
+      }
+    }
+  }
+`;
 
 const Header = () => {
   return (
