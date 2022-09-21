@@ -1,4 +1,5 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { CURRENT_USER_QUERY } from "../components/Header";
 import PageLayout from "../components/PageLayout";
 import useForm from "../lib/useForm";
@@ -22,6 +23,13 @@ const SIGNIN_MUTATION = gql`
 `;
 
 const SignInPage: NextPageWithLayout = () => {
+  const router = useRouter();
+  const { data, error, loading } = useQuery(CURRENT_USER_QUERY);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (data.authenticatedItem) {
+    router.push("/account");
+  }
   return <SignIn />;
 };
 
@@ -31,7 +39,7 @@ const SignIn = () => {
     password: "",
   });
 
-  const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
+  const [signin] = useMutation(SIGNIN_MUTATION, {
     variables: inputs,
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
@@ -44,32 +52,41 @@ const SignIn = () => {
   }
 
   return (
-    <form method="POST" onSubmit={handleSubmit}>
-      <h2>Sign into your account</h2>
-      <label htmlFor="email">
-        Email
+    <div className="flex items-center justify-center">
+      <form
+        className="flex flex-col gap-5 border p-2"
+        method="POST"
+        onSubmit={handleSubmit}
+      >
+        <h2 className="text-3xl">Sign into your account</h2>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
           placeholder="johndoe@gmail.com"
+          className="px-1"
           autoComplete="email"
           value={inputs.email}
           onChange={handleChange}
         />
-      </label>
-      <label htmlFor="password">
-        Password
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"
+          className="px-1"
           placeholder="Password"
           autoComplete="password"
           value={inputs.password}
           onChange={handleChange}
         />
-      </label>
-      <button type="submit">Sign In</button>
-    </form>
+        <button
+          className="bg-red-500 text-white font-bold hover:bg-red-400"
+          type="submit"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
   );
 };
 
